@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NxtWave Growth Intern — Submission</title>
+  <style>
+    :root {
+      --brand: #4f46e5;
+      --brand-dark: #3730a3;
+      --brand-light: #eef2ff;
+      --accent: #f59e0b;
+      --green: #10b981;
+      --text: #111827;
+      --muted: #6b7280;
+      --bg: #f8f9ff;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff; padding: 56px 24px 48px; text-align: center;
+    }
+    .top-banner .tag {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); padding: 5px 16px;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .top-banner h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 12px; }
+    .top-banner h1 span { color: #fcd34d; }
+    .top-banner p { font-size: 1.05rem; opacity: 0.85; max-width: 520px; margin: 0 auto 28px; }
+    .meta-chips { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .meta-chip {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--brand); margin-bottom: 14px; margin-top: 40px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ── DELIVERABLE CARDS ── */
+    .deliverable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 8px; }
+    .del-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 22px 24px;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .del-card:hover {
+      box-shadow: 0 8px 28px rgba(79,70,229,0.12);
+      border-color: var(--brand); transform: translateY(-2px);
+    }
+    .del-card .card-top { display: flex; align-items: flex-start; gap: 12px; }
+    .del-card .icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .del-card .card-meta { flex: 1; }
+    .del-card .card-num { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .del-card h3 { font-size: 1rem; font-weight: 800; margin: 2px 0 4px; }
+    .del-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+    .del-card .open-link {
+      align-self: flex-start; background: var(--brand-light);
+      color: var(--brand); font-size: 0.78rem; font-weight: 700;
+      padding: 5px 12px; border-radius: 6px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .del-card:hover .open-link { background: var(--brand); color: #fff; }
+
+    /* icon bg colours */
+    .icon-purple { background: #ede9fe; }
+    .icon-blue   { background: #dbeafe; }
+    .icon-green  { background: #d1fae5; }
+    .icon-yellow { background: #fef3c7; }
+    .icon-pink   { background: #fce7f3; }
+    .icon-teal   { background: #ccfbf1; }
+
+    /* ── STRATEGY SNAPSHOT ── */
+    .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .stat-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 18px 20px; text-align: center;
+    }
+    .stat-card .num { font-size: 2rem; font-weight: 900; color: var(--brand); line-height: 1; }
+    .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── CHANNEL SUMMARY ── */
+    .channel-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .channel-list li {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .channel-list .ch-icon { font-size: 1.3rem; width: 32px; text-align: center; flex-shrink: 0; }
+    .channel-list .ch-text { flex: 1; }
+    .channel-list .ch-text strong { font-size: 0.9rem; display: block; }
+    .channel-list .ch-text span { font-size: 0.8rem; color: var(--muted); }
+    .channel-list .ch-regs { font-weight: 800; font-size: 0.92rem; color: var(--brand); flex-shrink: 0; }
+    .channel-list .ch-budget { font-size: 0.8rem; color: var(--muted); flex-shrink: 0; min-width: 52px; text-align: right; }
+
+    /* ── KEY INSIGHT BOX ── */
+    .insight {
+      background: #fef3c7; border-left: 4px solid var(--accent);
+      border-radius: 10px; padding: 16px 20px; margin-bottom: 8px;
+    }
+    .insight strong { color: #92400e; display: block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .insight p { color: #78350f; font-size: 0.9rem; }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--text);
+    }
+    .checklist li .check { color: var(--green); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted);
+      background: var(--card);
+    }
+    footer strong { color: var(--brand); }
+
+    @media (max-width: 600px) {
+      .deliverable-grid { grid-template-columns: 1fr; }
+      .strategy-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <div class="tag">NxtWave Growth Intern · Round 1</div>
+  <h1>"Build Your First <span>AI Project</span><br>in 60 Minutes"</h1>
+  <p>Complete submission package — growth plan, working asset, outreach templates, and reflections.</p>
+  <div class="meta-chips">
+    <div class="meta-chip">🎯 500 Registrations</div>
+    <div class="meta-chip">💰 ₹2,000 Budget</div>
+    <div class="meta-chip">📅 7-Day Campaign</div>
+    <div class="meta-chip">🛠️ Working Asset: Live Landing Page + Referral Engine</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- DELIVERABLES -->
+  <div class="section-label">📦 Submission Deliverables — Open Each File</div>
+  <div class="deliverable-grid">
+
+    <a class="del-card" href="growth-plan-slides.html" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-purple">📊</div>
+        <div class="card-meta">
+          <div class="card-num">Deliverable 1</div>
+          <h3>Growth Plan (5 Slides)</h3>
+          <p>Persona, 4-channel strategy, referral mechanic, 7-day timeline, and the 500-registration math.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Slides →</span>
+    </a>
+
+    <a class="del-card" href="landing-page/index.html" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-blue">🚀</div>
+        <div class="card-meta">
+          <div class="card-num">Deliverable 2 — Working Asset</div>
+          <h3>Landing Page + Referral Engine</h3>
+          <p>Live registration form, auto-generated referral codes, leaderboard, countdown timer, WhatsApp share, and ?ref= URL tracking.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Live Page →</span>
+    </a>
+
+    <a class="del-card" href="whatsapp-templates.md" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-green">💬</div>
+        <div class="card-meta">
+          <div class="card-num">Deliverable 3</div>
+          <h3>WhatsApp & Email Templates</h3>
+          <p>5 peer-written WhatsApp templates for group posts, 1:1 messages, placement cells, plus a full email for placement officers.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Templates →</span>
+    </a>
+
+    <a class="del-card" href="ai-learning-notes.md" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-yellow">🤖</div>
+        <div class="card-meta">
+          <div class="card-num">Deliverable 4</div>
+          <h3>AI + Learning Notes</h3>
+          <p>3 real examples of what I asked AI → what it suggested → what I changed and why. Includes headline copy, channel strategy, and asset decision.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Notes →</span>
+    </a>
+
+    <a class="del-card" href="reflection-answers.md" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-pink">💡</div>
+        <div class="card-meta">
+          <div class="card-num">Deliverable 5</div>
+          <h3>Reflection Answers</h3>
+          <p>What changed from first idea to final solution, what I'd improve with 24 more hours, and what AI suggested that I deliberately rejected.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Reflections →</span>
+    </a>
+
+    <a class="del-card" href="growth-plan.md" target="_blank">
+      <div class="card-top">
+        <div class="icon icon-teal">📄</div>
+        <div class="card-meta">
+          <div class="card-num">Reference</div>
+          <h3>Full Growth Plan (Long Form)</h3>
+          <p>Detailed written version of the strategy with full reasoning, day-by-day execution, and budget breakdown.</p>
+        </div>
+      </div>
+      <span class="open-link">Open Doc →</span>
+    </a>
+
+  </div>
+
+  <!-- STRATEGY SNAPSHOT -->
+  <div class="section-label" style="margin-top:48px;">📈 Strategy at a Glance</div>
+  <div class="strategy-grid">
+    <div class="stat-card"><div class="num">530</div><div class="label">Target Registrations</div></div>
+    <div class="stat-card"><div class="num">₹2,000</div><div class="label">Total Budget</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">Channels (not 20)</div></div>
+    <div class="stat-card"><div class="num">7</div><div class="label">Days to 500</div></div>
+  </div>
+
+  <!-- CHANNEL BREAKDOWN -->
+  <div class="section-label" style="margin-top:32px;">📡 Channel Breakdown</div>
+  <ul class="channel-list">
+    <li>
+      <div class="ch-icon">💬</div>
+      <div class="ch-text">
+        <strong>WhatsApp Group Activation</strong>
+        <span>50 student connectors posting in final-year class/placement groups — peer trust, zero cost</span>
+      </div>
+      <div class="ch-regs">250 regs</div>
+      <div class="ch-budget">₹0</div>
+    </li>
+    <li>
+      <div class="ch-icon">🔗</div>
+      <div class="ch-text">
+        <strong>Referral Engine (Built into landing page)</strong>
+        <span>Unique codes + leaderboard + one-tap WhatsApp share turns every registrant into a recruiter</span>
+      </div>
+      <div class="ch-regs">150 regs</div>
+      <div class="ch-budget">₹600</div>
+    </li>
+    <li>
+      <div class="ch-icon">🏫</div>
+      <div class="ch-text">
+        <strong>College Clubs + Placement Cells</strong>
+        <span>Email to 30 placement officers framing it as a free placement resource — mass forwarding to batches</span>
+      </div>
+      <div class="ch-regs">60 regs</div>
+      <div class="ch-budget">₹0</div>
+    </li>
+    <li>
+      <div class="ch-icon">📱</div>
+      <div class="ch-text">
+        <strong>Instagram Paid Stories</strong>
+        <span>2 days of paid story ads targeting 18–22, India, engineering/placement interests</span>
+      </div>
+      <div class="ch-regs">40 regs</div>
+      <div class="ch-budget">₹1,000</div>
+    </li>
+  </ul>
+
+  <!-- INSIGHT -->
+  <div class="insight" style="margin-top:24px;">
+    <strong>⚡ Core Insight</strong>
+    <p>Final-year engineering students in Tier 2/3 colleges convert on <strong>peer trust</strong>, not ads. A batchmate's WhatsApp message outperforms an Instagram ad by 5–10× for this audience. The entire strategy is built around activating peer networks and making sharing the default next step after registration — not buying reach.</p>
+  </div>
+
+  <!-- WORKING ASSET HIGHLIGHTS -->
+  <div class="section-label" style="margin-top:40px;">🛠️ What Was Built (Working Asset)</div>
+  <ul class="checklist">
+    <li><span class="check">✅</span> Full registration form with client-side validation (name, phone, email, college, branch)</li>
+    <li><span class="check">✅</span> Unique referral code auto-generated per registrant on form submit</li>
+    <li><span class="check">✅</span> One-tap WhatsApp share button with pre-written message containing personal referral link</li>
+    <li><span class="check">✅</span> Live referral leaderboard showing top 5 referrers (drives competition)</li>
+    <li><span class="check">✅</span> Countdown timer to workshop date (live, updates every second)</li>
+    <li><span class="check">✅</span> Seats counter that decrements organically (real scarcity feel)</li>
+    <li><span class="check">✅</span> Registration counter that increments over time (social proof)</li>
+    <li><span class="check">✅</span> URL ?ref=CODE param auto-fills referral field + shows "referred by friend" banner</li>
+    <li><span class="check">✅</span> Success modal after registration with referral link + share CTA</li>
+    <li><span class="check">✅</span> Live activity ticker showing real-time registrations</li>
+    <li><span class="check">✅</span> Testimonials, workshop agenda, and prize structure — all on one page</li>
+    <li><span class="check">✅</span> Fully mobile-responsive</li>
+  </ul>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>NxtWave Growth Intern Challenge — Round 1 Submission</strong><br>
+  <span style="margin-top:6px;display:block;">Open <code>landing-page/index.html</code> in a browser to see the working asset live.</span>
+</footer>
+
+</body>
+</html>
